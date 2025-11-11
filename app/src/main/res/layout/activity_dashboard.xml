@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F2F2">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="30dp">
+
+        <!-- Welcome Text -->
+        <TextView
+            android:id="@+id/welcomeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome to KickStart!"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:layout_marginBottom="40dp" />
+
+        <!-- Step & Streak Tracker Button -->
+        <Button
+            android:id="@+id/btnStepTracker"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="🏃 Step &amp; Streak Tracker"
+            android:textSize="18sp"
+            android:backgroundTint="#6200EE"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Stopwatch & Timer Button -->
+        <Button
+            android:id="@+id/btnStopwatchTimer"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="⏱️ Stopwatch &amp; Timer"
+            android:textSize="18sp"
+            android:backgroundTint="#4CAF50"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Reminders Button -->
+        <Button
+            android:id="@+id/btnReminder"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="💧 Water &amp; 🧘 Meditation Reminders"
+            android:textSize="18sp"
+            android:backgroundTint="#FF9800"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Ovulation Tracker Button -->
+        <Button
+            android:id="@+id/btnOvulationTracker"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="🌸 Ovulation Tracker"
+            android:textSize="18sp"
+            android:backgroundTint="#E91E63"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="40dp" />
+
+        <!-- Logout Button -->
+        <Button
+            android:id="@+id/logoutButton"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:textSize="16sp"
+            android:backgroundTint="#757575"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+</ScrollView>
