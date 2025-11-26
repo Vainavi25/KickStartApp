@@ -1,15 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:background="#E8F5E9">
+    android:background="#F8F5FF">
 
-    <TextView
-        android:text="⏱️ Stopwatch &amp; Timer Screen"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:textColor="#000000" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="24dp">
 
-</LinearLayout>
+        <!-- Title -->
+        <TextView
+            android:id="@+id/tvTitleStopwatch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stopwatch &amp; Timer"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#2D2A32"
+            android:layout_marginBottom="24dp" />
+
+        <!-- STOPWATCH SECTION -->
+
+        <!-- Time Display -->
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00:00"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Buttons Row -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Start"
+                android:textSize="16sp"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btnPause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pause"
+                android:textSize="16sp"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btnReset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reset"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <!-- Lap Button -->
+        <Button
+            android:id="@+id/btnLap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lap"
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Lap Title -->
+        <TextView
+            android:id="@+id/tvLapsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Laps:"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#2D2A32"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Lap List -->
+        <ListView
+            android:id="@+id/listViewLaps"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:dividerHeight="4dp"
+            android:padding="4dp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- TIMER SECTION -->
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDDDDD"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/tvTimerTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Timer"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#2D2A32"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Input for seconds -->
+        <EditText
+            android:id="@+id/etTimerSeconds"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Enter minutes (e.g. 1, 5, 10)"
+            android:inputType="number"
+            android:padding="8dp"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Timer Buttons -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+            <Button
+                android:id="@+id/btnStartTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Start Timer"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btnCancelTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancel Timer" />
+        </LinearLayout>
+
+        <!-- Timer Display -->
+        <TextView
+            android:id="@+id/tvTimerDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time left: 0 s"
+            android:textSize="18sp"
+            android:textColor="#333333"
+            android:layout_marginBottom="16dp" />
+
+    </LinearLayout>
+</ScrollView>

@@ -1,17 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:background="#FCE4EC">
+    android:background="#FFF7FB">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="🩸 Ovulation / Period Tracker"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:textColor="#000000" />
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
 
-</LinearLayout>
+        <!-- Title -->
+        <TextView
+            android:id="@+id/tvOvulationTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ovulation Tracker"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#AD1457"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Subtitle -->
+        <TextView
+            android:id="@+id/tvOvulationSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Estimate your fertile window based on your cycle"
+            android:textSize="14sp"
+            android:textColor="#555555"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Last Period Date -->
+        <TextView
+            android:id="@+id/tvLastPeriodLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last period start date:"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnSelectDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Date"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvSelectedDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No date selected"
+            android:textSize="14sp"
+            android:textColor="#666666"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Cycle Length -->
+        <TextView
+            android:id="@+id/tvCycleLengthLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Average cycle length (days):"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/etCycleLength"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:hint="e.g. 28"
+            android:inputType="number"
+            android:padding="8dp"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Calculate Button -->
+        <Button
+            android:id="@+id/btnCalculateOvulation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calculate"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Results Card -->
+        <LinearLayout
+            android:id="@+id/layoutResults"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="#FFE3F2"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/tvNextPeriod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Next Period: -"
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/tvOvulationDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ovulation Day: -"
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/tvFertileWindow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fertile Window: -"
+                android:textSize="16sp"
+                android:textColor="#333333" />
+
+        </LinearLayout>
+
+        <!-- Reminder Text -->
+        <TextView
+            android:id="@+id/tvReminderMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="14sp"
+            android:textColor="#D81B60"
+            android:layout_marginBottom="8dp" />
+
+
+        <!-- Note -->
+        <TextView
+            android:id="@+id/tvDisclaimer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Note: This is only an estimate and not a medical tool."
+            android:textSize="12sp"
+            android:textColor="#777777"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+</ScrollView>

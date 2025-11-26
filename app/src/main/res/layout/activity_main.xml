@@ -3,84 +3,110 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp"
     android:background="#F3F4F6"
-    android:gravity="center"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
     tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="24dp">
 
-
-    <TextView
-            android:id="@+id/loginTitle"
+        <!-- App name / logo space -->
+        <TextView
+            android:id="@+id/appTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Login"
-            android:textSize="28sp"
+            android:text="KickStart"
+            android:textSize="26sp"
             android:textStyle="bold"
-            android:textColor="#333"
-            android:layout_marginBottom="20dp" />
+            android:textColor="#222222"
+            android:layout_marginBottom="8dp" />
 
-        <EditText
-            android:id="@+id/loginEmail"
+        <TextView
+            android:id="@+id/appSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome back! Please login"
+            android:textSize="14sp"
+            android:textColor="#666666"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Card-like container -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Email"
-            android:inputType="textEmailAddress"
-            android:padding="12dp"
-            android:background="@android:drawable/edit_text"
-            android:layout_marginBottom="16dp"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:clickable="true" />
-
-        <EditText
-            android:id="@+id/loginPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter Password"
-            android:inputType="textPassword"
-            android:padding="12dp"
-            android:background="@android:drawable/edit_text"
+            android:orientation="vertical"
+            android:background="@android:color/white"
+            android:padding="20dp"
+            android:elevation="4dp"
+            android:layout_margin="8dp"
+            android:layout_marginTop="0dp"
             android:layout_marginBottom="8dp"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:clickable="true"/>
+            android:backgroundTintMode="src_over"
+            android:clipToPadding="false"
+            android:clipToOutline="false">
 
-        <CheckBox
-            android:id="@+id/showPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Show Password"
-            android:layout_marginBottom="20dp" />
+            <TextView
+                android:id="@+id/loginTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:layout_marginBottom="16dp" />
 
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            android:backgroundTint="#4CAF50"
-            android:textColor="#fff"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:layout_marginBottom="16dp" />
+            <EditText
+                android:id="@+id/loginEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:padding="12dp"
+                android:background="@android:drawable/edit_text"
+                android:layout_marginBottom="16dp" />
 
-        <Button
-            android:id="@+id/btnSignup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Create New Account"
-            android:backgroundTint="#2196F3"
-            android:textColor="#fff"
-            android:textStyle="bold"
-            android:padding="10dp" />
+            <EditText
+                android:id="@+id/loginPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="12dp"
+                android:background="@android:drawable/edit_text"
+                android:layout_marginBottom="8dp" />
+
+            <CheckBox
+                android:id="@+id/showPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show Password"
+                android:layout_marginBottom="20dp" />
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:backgroundTint="#4CAF50"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:layout_marginBottom="12dp" />
+
+            <Button
+                android:id="@+id/btnSignup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create New Account"
+                android:backgroundTint="#2196F3"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:padding="10dp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

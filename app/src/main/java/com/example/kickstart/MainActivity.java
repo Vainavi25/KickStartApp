@@ -8,7 +8,11 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,11 +20,29 @@ public class MainActivity extends AppCompatActivity {
     Button btnLogin, btnSignup;
     CheckBox showPassword;
 
+    FirebaseAuth firebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        // ✅ 1) Check SharedPreferences + Firebase to auto-skip login if already logged in
+        SharedPreferences prefs = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+        boolean isLoggedIn = prefs.getBoolean("isLoggedIn", false);
+
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+
+        if (isLoggedIn && currentUser != null) {
+            // User already logged in → go directly to Dashboard
+            startActivity(new Intent(MainActivity.this, DashboardActivity.class));
+            finish();
+            return; // Stop here so login UI doesn't show
+        }
+
+        // 🔹 If not logged in → normal login screen
         loginEmail = findViewById(R.id.loginEmail);
         loginPassword = findViewById(R.id.loginPassword);
         btnLogin = findViewById(R.id.btnLogin);
@@ -32,12 +54,15 @@ public class MainActivity extends AppCompatActivity {
             if (isChecked) {
                 loginPassword.setInputType(android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
             } else {
-                loginPassword.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                loginPassword.setInputType(
+                        android.text.InputType.TYPE_CLASS_TEXT |
+                                android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
+                );
             }
             loginPassword.setSelection(loginPassword.length());
         });
 
-        // Login button click
+        // ✅ 2) Login button click
         btnLogin.setOnClickListener(v -> {
             String email = loginEmail.getText().toString().trim();
             String password = loginPassword.getText().toString().trim();
@@ -52,24 +77,31 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
 
-            SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
-            String savedEmail = prefs.getString("email", null);
-            String savedPassword = prefs.getString("password", null);
+            // 🔥 Firebase Login
+            firebaseAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            // ✅ Save login status in SharedPreferences
+                            SharedPreferences sp = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sp.edit();
+                            editor.putBoolean("isLoggedIn", true);
+                            editor.apply();
 
-            if (email.equals(savedEmail) && password.equals(savedPassword)) {
-                Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
-                startActivity(intent);
-                finish(); // optional: closes login page so back button doesn’t go back
-            } else {
-                Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show();
-            }
+                            Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(MainActivity.this, DashboardActivity.class));
+                            finish();
+                        } else {
+                            String msg = task.getException() != null
+                                    ? task.getException().getMessage()
+                                    : "Login failed";
+                            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+                        }
+                    });
         });
 
-        // Signup button click
+        // Go to signup page
         btnSignup.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, SignupActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(MainActivity.this, SignupActivity.class));
         });
     }
 }

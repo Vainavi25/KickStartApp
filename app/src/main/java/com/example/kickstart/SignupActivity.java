@@ -3,13 +3,15 @@ package com.example.kickstart;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
-import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -17,6 +19,7 @@ public class SignupActivity extends AppCompatActivity {
     Button btnCreateAccount;
     CheckBox showSignupPassword;
     TextView alreadyHaveAccount;
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +32,9 @@ public class SignupActivity extends AppCompatActivity {
         showSignupPassword = findViewById(R.id.showSignupPassword);
         alreadyHaveAccount = findViewById(R.id.alreadyHaveAccount);
 
-        // Toggle password visibility
+        auth = FirebaseAuth.getInstance(); // Initialize Firebase Auth
+
+        // Show/hide password
         showSignupPassword.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 signupPassword.setInputType(android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
@@ -39,7 +44,7 @@ public class SignupActivity extends AppCompatActivity {
             signupPassword.setSelection(signupPassword.length());
         });
 
-        // When Create Account button is clicked
+        // Create account button
         btnCreateAccount.setOnClickListener(v -> {
             String email = signupEmail.getText().toString().trim();
             String password = signupPassword.getText().toString().trim();
@@ -50,7 +55,7 @@ public class SignupActivity extends AppCompatActivity {
             }
 
             if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                Toast.makeText(this, "Please enter a valid email address", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Please enter a valid email", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -59,24 +64,23 @@ public class SignupActivity extends AppCompatActivity {
                 return;
             }
 
-            // Save credentials
-            getSharedPreferences("UserPrefs", MODE_PRIVATE)
-                    .edit()
-                    .putString("email", email)
-                    .putString("password", password)
-                    .apply();
-
-            Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show();
-
-            // Go back to login page
-            startActivity(new Intent(SignupActivity.this, MainActivity.class));
-            finish();
+            // Firebase Signup
+            auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show();
+                            // Go to Dashboard
+                            startActivity(new Intent(SignupActivity.this, MainActivity.class));
+                            finish();
+                        } else {
+                            Toast.makeText(this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
         });
 
-        // Go to login page manually
+        // Already have account click
         alreadyHaveAccount.setOnClickListener(v -> {
-            startActivity(new Intent(SignupActivity.this, MainActivity.class));
-            finish();
+            Toast.makeText(this, "You already have an account. Login from dashboard.", Toast.LENGTH_SHORT).show();
         });
     }
 }

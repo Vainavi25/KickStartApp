@@ -1,15 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:background="#E8EAF6">
+    android:background="#F3F7FF">
 
-    <TextView
-        android:text="🏃 Step &amp; Streak Tracker Screen"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:textColor="#000000" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
 
-</LinearLayout>
+        <!-- Title -->
+        <TextView
+            android:id="@+id/tvStepTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Step &amp; Streak Tracker"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#1A237E"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvStepSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Track your daily steps, calories and streak"
+            android:textSize="14sp"
+            android:textColor="#555555"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Today Steps -->
+        <TextView
+            android:id="@+id/tvTodayStepsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Today's Steps"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/tvTodaySteps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="#0D47A1"
+            android:layout_marginBottom="16dp" />
+
+        <!-- 🔹 Goal input + button -->
+        <EditText
+            android:id="@+id/etGoalInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your step goal (e.g. 6000)"
+            android:inputType="number"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnSetGoal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set Goal"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Goal display -->
+        <TextView
+            android:id="@+id/tvGoalLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Daily Goal:"
+            android:textSize="14sp"
+            android:textColor="#333333" />
+
+        <TextView
+            android:id="@+id/tvGoalValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="8000 steps"
+            android:textSize="14sp"
+            android:textColor="#333333"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Progress bar -->
+        <ProgressBar
+            android:id="@+id/progressSteps"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:progress="0"
+            android:max="100"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvProgressPercent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0% of goal"
+            android:textSize="13sp"
+            android:textColor="#555555"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Calories -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="#E3F2FD"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/tvCaloriesLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estimated calories burned"
+                android:textSize="14sp"
+                android:textColor="#333333"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:id="@+id/tvCaloriesValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 kcal"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#E65100" />
+        </LinearLayout>
+
+        <!-- Streak -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="#FFF3E0"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:id="@+id/tvStreakLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current streak"
+                android:textSize="14sp"
+                android:textColor="#333333"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:id="@+id/tvStreakValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 days"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#BF360C" />
+
+            <TextView
+                android:id="@+id/tvStreakNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="You earn a streak day when you reach your daily step goal."
+                android:textSize="12sp"
+                android:textColor="#666666"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!-- Demo step buttons -->
+        <Button
+            android:id="@+id/btnAddSteps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+100 steps (demo)"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnResetSteps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reset today"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Info -->
+        <TextView
+            android:id="@+id/tvStepInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Note: This is a demo step tracker without real sensor integration. Steps and streak are calculated based on a daily goal and manual input."
+            android:textSize="11sp"
+            android:textColor="#777777"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+</ScrollView>

@@ -9,34 +9,41 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KickStart">
+
         <activity
             android:name=".OvulationTrackerActivity"
             android:exported="false" />
+
         <activity
             android:name=".ReminderActivity"
             android:exported="false" />
+
         <activity
             android:name=".StopwatchTimerActivity"
             android:exported="false" />
+
         <activity
             android:name=".StepTrackerActivity"
             android:exported="false" />
+
         <activity
             android:name=".DashboardActivity"
-            android:exported="false" />
+            android:exported="true"/>
+
+
         <activity
             android:name=".SignupActivity"
             android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:windowSoftInputMode="stateVisible|adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
     </application>
 
 </manifest>

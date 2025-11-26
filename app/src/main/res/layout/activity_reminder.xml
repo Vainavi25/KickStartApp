@@ -1,15 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:background="#E0F7FA">
+    android:background="#F3F7FF">
 
-    <TextView
-        android:text="💧 Water &amp; 🧘 Meditation Reminders Screen"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:textColor="#000000" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
 
-</LinearLayout>
+        <!-- Title -->
+        <TextView
+            android:id="@+id/tvReminderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Smart Reminders"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#1A237E"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/tvReminderSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Manage your daily water and medication reminders"
+            android:textSize="14sp"
+            android:textColor="#555555"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Water Reminder Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="#E3F2FD"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/tvWaterDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Water Reminder"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#0D47A1"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:id="@+id/tvWaterDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Get small reminders to drink water regularly."
+                android:textSize="13sp"
+                android:textColor="#444444"
+                android:layout_marginBottom="8dp" />
+
+            <CheckBox
+                android:id="@+id/cbWaterReminder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enable water reminders"
+                android:checked="true"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/tvWaterTimeRange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reminder time range: 9:00 AM – 9:00 PM"
+                android:textSize="13sp"
+                android:textColor="#333333" />
+
+        </LinearLayout>
+
+        <!-- Medication Reminder Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="#FFF3E0"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/tvMedTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medication Reminder"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#BF360C"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:id="@+id/tvMedDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Keep track of important tablets / medicines on time."
+                android:textSize="13sp"
+                android:textColor="#444444"
+                android:layout_marginBottom="8dp" />
+
+            <CheckBox
+                android:id="@+id/cbMedReminder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enable medication reminders"
+                android:checked="true"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/tvMedTimeRange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Usual reminder time: 8:00 PM"
+                android:textSize="13sp"
+                android:textColor="#333333" />
+        </LinearLayout>
+
+        <!-- Info Text -->
+        <TextView
+            android:id="@+id/tvReminderInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Note: In this project version, we are saving reminder preferences locally using SharedPreferences. In a full app, these settings can be connected to real notification alarms."
+            android:textSize="12sp"
+            android:textColor="#666666"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/btnSaveReminderSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Reminder Settings" />
+    </LinearLayout>
+
+</ScrollView>
